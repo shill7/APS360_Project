@@ -9,349 +9,320 @@
 %\newcommand{\apsname}{Final Report}
 
 %######## APS360: Put your Group Number here
-\newcommand{\gpnumber}{7}
+\newcommand{\gpnumber}{11}
 
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{float}
 
 %######## APS360: Put your project Title here
-\title{Formatting Instructions for APS360 Project  \\ 
-based on ICLR Conference Format}
-
-
+\title{AI Writing Detector: A Deep Learning Approach to Distinguish Human and AI-Generated Text}
+ 
 %######## APS360: Put your names, student IDs and Emails here
-\author{Author One  \\
-Student\# 1005678901\\
-\texttt{author1@mail.utoronto.ca} \\
+\author{Zahra Mohamed Suhail  \\
+Student\# 1008997016 \\
+\texttt{zahra.suhail@mail.utoronto.ca} \\
 \And
-Author Two  \\
-Student\# 1005678901 \\
-\texttt{author2@mail.utoronto.ca} \\
-\AND
-Author Three  \\
-Student\# 1005678901 \\
-\texttt{author3@mail.utoronto.ca} \\
+Tajrian Islam \\
+Student\# 1007939251 \\
+\texttt{tajriansyeda.islam@mail.utoronto.ca} \\
 \And
-Author Four \\
-Student\# 1005678901 \\
-\texttt{author4@mail.utoronto.ca} \\
-\AND
+Xin Ling (Grace) Li  \\
+Student\# 1010143113 \\
+\texttt{xlgrace.li@mail.utoronto.ca} \\
+\And
+Sophia Hill  \\
+Student\# 1007865883 \\
+\texttt{sophia.hill@mail.utoronto.ca} \\
+\And
 }
-
-% The \author macro works with any number of authors. There are two commands
-% used to separate the names and addresses of multiple authors: \And and \AND.
-%
-% Using \And between authors leaves it to \LaTeX{} to determine where to break
-% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
-% puts 3 of 4 authors names on the first line, and the last on the second
-% line, try using \AND instead of \And before the third author name.
 
 \newcommand{\fix}{\marginpar{FIX}}
 \newcommand{\new}{\marginpar{NEW}}
 
 \iclrfinalcopy 
-%######## APS360: Document starts here
 \begin{document}
 
-
 \maketitle
+\newpage
 
-\begin{abstract}
-This template should be used for all your project related reports in APS360 course. -- Write an abstract for your project here. Please review the \textbf{ First Course Tutorial} for a quick start
-%######## APS360: Do not change the next line. This shows your Main body page count.
-----Total Pages: \pageref{last_page}
-\end{abstract}
+\section{Introduction}
+With the introduction of ChatGPT in 2022, generative Artificial Intelligence (AI) has become widely accessible, particularly to generate written content at a level similar to that created by humans. However, this quickly raised ethical concerns, as people have begun to pass off AI-written content as their own, which has created issues of plagiarism in educational, professional, and creative spaces. Thus, a need has arisen for a deep learning algorithm that can efficiently and accurately detect AI-written content to mitigate the implications to academic, professional, and artistic integrity, and to prevent inaccurate accusations of plagiarism. Therefore, we propose to create an AI Writing Detector that can accurately detect the complexities of human-written, AI-written, and mixed content. AI algorithms used to generate written content have detectable structures that differ from that of humans. Through a Multi-Layer Perceptron (MLP) model, our team will create an AI Writing Detector that will help resolve the issues of integrity and of the authorship in the age of AI.
 
+\section{Illustration}
+Our AI Writing Detector's overall pipeline consists of text preprocessing, feature extractions, and a MLP neural network to classify between AI-generated and human-written text. An illustration of our proposed AI Writing Detector Pipeline is shown in Figure 1.
 
-
-\section{Project Document Submission for APS360 Course}
-
-
-The format for the submissions is a variant of the ICLR 2022 format.
-Please read carefully the instructions below, and follow them
-faithfully. There is a \textbf{9 page} limit for the main text. References do not have any limitation. This is also ICLR's standard length for a paper submission. 
-If your main text goes to page 10, a $-20\%$ penalty would be applied. If your main text goes to page 11, you will not receive any grade for your submission. 
-
-\subsection{Style}
-
-Papers to be submitted to APS360 must be prepared according to the
-instructions presented here.
-
-Authors are required to use the APS360 \LaTeX{} style files obtainable at the
-APS360 website on Quercus. Tweaking the style is not permitted.
-
-\subsection{Retrieval of style files}
-
-The file \verb+APS360_Project.pdf+ contains these
-instructions and illustrates the various formatting requirements your APS360 paper must satisfy.
-Submissions must be made using \LaTeX{} and the style files
-\verb+iclr2022_conference.sty+ and \verb+iclr2022_conference.bst+ (to be used with \LaTeX{}2e). The file
-\verb+APS360_Project.tex+ may be used as a ``shell'' for writing your paper. All you have to do is replace the author, title, abstract, and text of the paper with
-your own.
-
-The formatting instructions contained in these style files are summarized in
-sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
-
-\section{General formatting instructions}
-\label{gen_inst}
-
-The text must be confined within a rectangle 5.5~inches (33~picas) wide and
-9~inches (54~picas) long. The left margin is 1.5~inch (9~picas).
-Use 10~point type with a vertical spacing of 11~points. Times New Roman is the
-preferred typeface throughout. Paragraphs are separated by 1/2~line space,
-with no indentation.
-
-Paper title is 17~point, in small caps and left-aligned.
-All pages should start at 1~inch (6~picas) from the top of the page.
-
-Authors' names are
-set in boldface, and each name is placed above its corresponding
-address. The lead author's name is to be listed first, and
-the co-authors' names are set to follow. Authors sharing the
-same address can be on the same line.
-
-Please pay special attention to the instructions in section \ref{others}
-regarding figures, tables, acknowledgments, and references.
-
-
-There will be a strict upper limit of 9 pages for the main text of the initial submission, with unlimited additional pages for citations. 
-
-\section{Headings: first level}
-\label{headings}
-
-First level headings are in small caps,
-flush left and in point size 12. One line space before the first level
-heading and 1/2~line space after the first level heading.
-
-\subsection{Headings: second level}
-
-Second level headings are in small caps,
-flush left and in point size 10. One line space before the second level
-heading and 1/2~line space after the second level heading.
-
-\subsubsection{Headings: third level}
-
-Third level headings are in small caps,
-flush left and in point size 10. One line space before the third level
-heading and 1/2~line space after the third level heading.
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-These instructions apply to everyone, regardless of the formatter being used.
-
-\subsection{Citations within the text}
-
-Citations within the text should be based on the \texttt{natbib} package
-and include the authors' last names and year (with the ``et~al.'' construct
-for more than two authors). When the authors or the publication are
-included in the sentence, the citation should not be in parenthesis using \verb|\citet{}| (as
-in ``See \citet{Hinton06} for more information.''). Otherwise, the citation
-should be in parenthesis using \verb|\citep{}| (as in ``Deep learning shows promise to make progress
-towards AI~\citep{Bengio+chapter2007}.'').
-
-The corresponding references are to be listed in alphabetical order of
-authors, in the \textsc{References} section. As to the format of the
-references themselves, any style is acceptable as long as it is used
-consistently.
-
-To cite a new paper, first, you need to add that paper's BibTeX information to \verb+APS360_ref.bib+ file and then you can use the \verb|\citep{}| command to cite that in your main document. 
-
-\subsection{Footnotes}
-
-Indicate footnotes with a number\footnote{Sample of the first footnote} in the
-text. Place the footnotes at the bottom of the page on which they appear.
-Precede the footnote with a horizontal rule of 2~inches
-(12~picas).\footnote{Sample of the second footnote}
-
-\subsection{Figures}
-
-All artwork must be neat, clean, and legible. Lines should be dark
-enough for purposes of reproduction; art work should not be
-hand-drawn. The figure number and caption always appear after the
-figure. Place one line space before the figure caption, and one line
-space after the figure. The figure caption is lower case (except for
-first word and proper nouns); figures are numbered consecutively.
-
-Make sure the figure caption does not get separated from the figure.
-Leave sufficient space to avoid splitting the figure and figure caption.
-
-You may use color figures.
-However, it is best for the
-figure captions and the paper body to make sense if the paper is printed
-either in black/white or in color.
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{Figs/td-deep-learning.jpg}
-\end{center}
-\caption{Sample figure caption. Image: ZDNet}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{illustration.png}
+    \caption{An illustration of our proposed AI Writing Detector Pipeline is shown}
+    \label{fig:pipeline}
 \end{figure}
 
-\subsection{Tables}
+\section{Background \& Related Work}
 
-All tables must be centered, neat, clean and legible. Do not use hand-drawn
-tables. The table number and title always appear before the table. See
-Table~\ref{sample-table}.
+\subsection{Related Papers}
 
-Place one line space before the table title, one line space after the table
-title, and one line space after the table. The table title must be lower case
-(except for first word and proper nouns); tables are numbered consecutively.
+\textbf{``Detecting Generative Artificial Intelligence Essays using Large Language Models: Machine and Deep Learning Approaches''}
 
-\begin{table}[t]
-\caption{Sample table title}
-\label{sample-table}
-\begin{center}
-\begin{tabular}{ll}
-\multicolumn{1}{c}{\bf PART}  &\multicolumn{1}{c}{\bf DESCRIPTION}
-\\ \hline \\
-Dendrite         &Input terminal \\
-Axon             &Output terminal \\
-Soma             &Cell body (contains cell nucleus) \\
-\end{tabular}
-\end{center}
-\end{table}
+This study analyses the efficacy of different deep learning models to identify human written and AI written essays. The algorithms it discusses are logistic regression, Support Vector Machine (SVM), decision trees, random forests, K-Nearest Neighbours (KNN), and Long Short Term Memory (LSTM). The research used Term Frequency-Inverse Document Frequency (TF-IDF) to prepare their data. It found that SVM and LSTM were the most accurate algorithms, though LSTM is more demanding computationally.
 
-\section{Default Notation}
+\textbf{``Deep learning detection method for large language models-generated scientific content''}
 
-In an attempt to encourage standardized notation, we have included the
-notation file from the textbook, \textit{Deep Learning}
-\cite{goodfellow2016deep} available at
-\url{https://github.com/goodfeli/dlbook_notation/}.  Use of this style
-is not required and can be disabled by commenting out
-\texttt{math\_commands.tex}.
+This paper outlines a model called AI-Catcher developed to identify AI generated writing, citations, and data in scientific papers, treated as a binary classification problem. AI-Catcher uses two models to identify human versus AI generated text: the MLP and a Convolutional Neural Network (CNN). For the MLP, it prepares the data through text cleaning, text encoding, and padding. The MLP model then has five hidden layers, each with 256 neurons, where each layer applies a linear transformation and then ReLU activation. For the CNN model, it prepares the data through extraction of thirteen linguistic and statistical features from the text. Then, it uses the embedding layer to put the encoded integers into vectors, followed by a dropout layer, and then a convolutional layer connected to a global max pooling layer. The results of the two are then concatenated into a single feature vector, which goes through two additional hidden layers. The accuracy, precision, recall, and F1 score of the model were assessed based on confusion matrices. This research was only conducted using scientific papers written by humans or generated by ChatGPT (as opposed to other LLMs).
 
+\textbf{``Detecting AI-generated essays: the ChatGPT challenge''}
 
-\centerline{\bf Numbers and Arrays}
-\bgroup
-\def\arraystretch{1.5}
-\begin{tabular}{p{1in}p{3.25in}}
-$\displaystyle a$ & A scalar (integer or real)\\
-$\displaystyle \va$ & A vector\\
-$\displaystyle \mA$ & A matrix\\
-$\displaystyle \tA$ & A tensor\\
-$\displaystyle \mI_n$ & Identity matrix with $n$ rows and $n$ columns\\
-$\displaystyle \mI$ & Identity matrix with dimensionality implied by context\\
-$\displaystyle \ve^{(i)}$ & Standard basis vector $[0,\dots,0,1,0,\dots,0]$ with a 1 at position $i$\\
-$\displaystyle \text{diag}(\va)$ & A square, diagonal matrix with diagonal entries given by $\va$\\
-$\displaystyle \ra$ & A scalar random variable\\
-$\displaystyle \rva$ & A vector-valued random variable\\
-$\displaystyle \rmA$ & A matrix-valued random variable\\
-\end{tabular}
-\egroup
-\vspace{0.25cm}
-\centerline{\bf Sets and Graphs}
-\bgroup
-\def\arraystretch{1.5}
+This research paper from early 2023 investigates effective algorithms to identify human and ChatGPT generated essays. They used a n-gram bag-of-words (BOW) language model for the classifier input with n=5. They tested the performance of Support Vector Machine, Naïve Bayes, Logistic Regression, Random Forest, and Neural Network classification algorithms and then tested the performance of an Ensemble Learning (EL) classifier with the five algorithms fed to it. The findings stated that their SVM, which was modified to eliminate False Negatives entirely, was the most efficient algorithm. The study emphasized eliminating False Negatives (human written essays labelled as AI) due to the ethical implications of incorrectly blaming students for plagiarism with ChatGPT. SVM alone had a slightly lower accuracy than EL, but had better recall and F2 scores. Their SVM model also had fewer False Negatives than OpenAI Detector, GPTZero, and Copyleaks on test data and a 100\% accuracy in detecting human-written essays, despite a lower overall accuracy. This research did also have a relatively small sample size, with 230 total essays for training and 150 for testing (Cingillioglu, 2023).
 
-\begin{tabular}{p{1.25in}p{3.25in}}
-$\displaystyle \sA$ & A set\\
-$\displaystyle \R$ & The set of real numbers \\
-$\displaystyle \{0, 1\}$ & The set containing 0 and 1 \\
-$\displaystyle \{0, 1, \dots, n \}$ & The set of all integers between $0$ and $n$\\
-$\displaystyle [a, b]$ & The real interval including $a$ and $b$\\
-$\displaystyle (a, b]$ & The real interval excluding $a$ but including $b$\\
-$\displaystyle \sA \backslash \sB$ & Set subtraction, i.e., the set containing the elements of $\sA$ that are not in $\sB$\\
-$\displaystyle \gG$ & A graph\\
-$\displaystyle \parents_\gG(\ervx_i)$ & The parents of $\ervx_i$ in $\gG$
-\end{tabular}
-\vspace{0.25cm}
+\subsection{Current Software Solutions}
 
+\textbf{GPTZero}
 
-\centerline{\bf Indexing}
-\bgroup
-\def\arraystretch{1.5}
+GPTZero is an AI detector that scans for AI generated writing on a sentence, paragraph, and document level. It can detect AI written content generated by ChatGPT, GPT-4, GPT-3, GPT-2, LLaMA, and derivatives of those models. It claims to have a 99\% accuracy and has an extension that can be added to Google Classroom and Google Docs. It can also identify if a text is entirely human written, entirely AI written, or mixed. However some of its features are locked behind a paid subscription, such as its ability to indicate the most human or AI written parts of a sample of writing and the number of characters, words, or files that can be submitted to it at a time, and it is also primarily for the analysis of English text.
 
-\begin{tabular}{p{1.25in}p{3.25in}}
-$\displaystyle \eva_i$ & Element $i$ of vector $\va$, with indexing starting at 1 \\
-$\displaystyle \eva_{-i}$ & All elements of vector $\va$ except for element $i$ \\
-$\displaystyle \emA_{i,j}$ & Element $i, j$ of matrix $\mA$ \\
-$\displaystyle \mA_{i, :}$ & Row $i$ of matrix $\mA$ \\
-$\displaystyle \mA_{:, i}$ & Column $i$ of matrix $\mA$ \\
-$\displaystyle \etA_{i, j, k}$ & Element $(i, j, k)$ of a 3-D tensor $\tA$\\
-$\displaystyle \tA_{:, :, i}$ & 2-D slice of a 3-D tensor\\
-$\displaystyle \erva_i$ & Element $i$ of the random vector $\rva$ \\
-\end{tabular}
-\egroup
-\vspace{0.25cm}
+\textbf{Copyleaks}
 
+Copyleaks is a plagiarism detector and AI detector. It works with 30+ languages and claims to have a 99.8\% accuracy and a 0.2\% false positive rate. It can detect text written by LLMs like ChatGPT, Gemini, DeepSeek, Claude, Jasper 3, LLaMA, and T5. It also shows the percentage of AI in a piece of text and can account for different detection sensitivity levels. It claims to have the capability to identify plagiarism and paraphrasing done with AI and that it can identify human written, AI written, and mixed text. It has a minimum requirement for the number of characters (350) to accurately determine the presence of AI. Copyleaks also has Google Docs extension and mostly requires a paid subscription, with only a limited number of free uses.
 
-\centerline{\bf Calculus}
-\bgroup
-\def\arraystretch{1.5}
-\begin{tabular}{p{1.25in}p{3.25in}}
-% NOTE: the [2ex] on the next line adds extra height to that row of the table.
-% Without that command, the fraction on the first line is too tall and collides
-% with the fraction on the second line.
-$\displaystyle\frac{d y} {d x}$ & Derivative of $y$ with respect to $x$\\ [2ex]
-$\displaystyle \frac{\partial y} {\partial x} $ & Partial derivative of $y$ with respect to $x$ \\
-$\displaystyle \nabla_\vx y $ & Gradient of $y$ with respect to $\vx$ \\
-$\displaystyle \nabla_\mX y $ & Matrix derivatives of $y$ with respect to $\mX$ \\
-$\displaystyle \nabla_\tX y $ & Tensor containing derivatives of $y$ with respect to $\tX$ \\
-$\displaystyle \frac{\partial f}{\partial \vx} $ & Jacobian matrix $\mJ \in \R^{m\times n}$ of $f: \R^n \rightarrow \R^m$\\
-$\displaystyle \nabla_\vx^2 f(\vx)\text{ or }\mH( f)(\vx)$ & The Hessian matrix of $f$ at input point $\vx$\\
-$\displaystyle \int f(\vx) d\vx $ & Definite integral over the entire domain of $\vx$ \\
-$\displaystyle \int_\sS f(\vx) d\vx$ & Definite integral with respect to $\vx$ over the set $\sS$ \\
-\end{tabular}
-\egroup
-\vspace{0.25cm}
+\textbf{Grammarly}
 
-\centerline{\bf Probability and Information Theory}
-\bgroup
-\def\arraystretch{1.5}
-\begin{tabular}{p{1.25in}p{3.25in}}
-$\displaystyle P(\ra)$ & A probability distribution over a discrete variable\\
-$\displaystyle p(\ra)$ & A probability distribution over a continuous variable, or over
-a variable whose type has not been specified\\
-$\displaystyle \ra \sim P$ & Random variable $\ra$ has distribution $P$\\% so thing on left of \sim should always be a random variable, with name beginning with \r
-$\displaystyle  \E_{\rx\sim P} [ f(x) ]\text{ or } \E f(x)$ & Expectation of $f(x)$ with respect to $P(\rx)$ \\
-$\displaystyle \Var(f(x)) $ &  Variance of $f(x)$ under $P(\rx)$ \\
-$\displaystyle \Cov(f(x),g(x)) $ & Covariance of $f(x)$ and $g(x)$ under $P(\rx)$\\
-$\displaystyle H(\rx) $ & Shannon entropy of the random variable $\rx$\\
-$\displaystyle \KL ( P \Vert Q ) $ & Kullback-Leibler divergence of P and Q \\
-$\displaystyle \mathcal{N} ( \vx ; \vmu , \mSigma)$ & Gaussian distribution %
-over $\vx$ with mean $\vmu$ and covariance $\mSigma$ \\
-\end{tabular}
-\egroup
-\vspace{0.25cm}
+Grammarly, an AI based grammar checker, also has its own AI detector. It can detect writing generated by Grammarly, ChatGPT, Google Gemini, and Claude, and it can show the percentage of text that is AI generated. However, it is only available with certain paid subscriptions and they have not stated the accuracy rate of their checker.
 
-\centerline{\bf Functions}
-\bgroup
-\def\arraystretch{1.5}
-\begin{tabular}{p{1.25in}p{3.25in}}
-$\displaystyle f: \sA \rightarrow \sB$ & The function $f$ with domain $\sA$ and range $\sB$\\
-$\displaystyle f \circ g $ & Composition of the functions $f$ and $g$ \\
-  $\displaystyle f(\vx ; \vtheta) $ & A function of $\vx$ parametrized by $\vtheta$.
-  (Sometimes we write $f(\vx)$ and omit the argument $\vtheta$ to lighten notation) \\
-$\displaystyle \log x$ & Natural logarithm of $x$ \\
-$\displaystyle \sigma(x)$ & Logistic sigmoid, $\displaystyle \frac{1} {1 + \exp(-x)}$ \\
-$\displaystyle \zeta(x)$ & Softplus, $\log(1 + \exp(x))$ \\
-$\displaystyle || \vx ||_p $ & $\normlp$ norm of $\vx$ \\
-$\displaystyle || \vx || $ & $\normltwo$ norm of $\vx$ \\
-$\displaystyle x^+$ & Positive part of $x$, i.e., $\max(0,x)$\\
-$\displaystyle \1_\mathrm{condition}$ & is 1 if the condition is true, 0 otherwise\\
-\end{tabular}
-\egroup
-\vspace{0.25cm}
+\newpage
+\section{Data Processing}
+Figure 2 illustrates the data process pipeline. It demonstrates the effort to source, repurpose, clean, and structure data rather than just using a pre-existing dataset.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth,height=0.4\textheight,keepaspectratio]{data.png}
+    \caption{Schematic overview of the proposed data processing methodology}
+    \label{fig:pipeline}
+\end{figure}
 
+\subsection{Data Sources}
+To ensure a robust and diverse dataset, we will undertake an extensive data collection and processing effort, prioritizing originality and rigor over the use of pre-existing datasets. Our data is sourced from multiple origins to enhance generalization:
 
-\section{Final instructions}
-Do not change any aspects of the formatting parameters in the style files.
-In particular, do not modify the width or length of the rectangle the text
-should fit into, and do not change font sizes (except perhaps in the
-\textsc{References} section; see below). Please note that pages should be
-numbered.
+\begin{itemize}
+    \item \textbf{Human-Written Text:}
+    \begin{itemize}
+        \item \textbf{Academic Papers \& Essays:}
+        \begin{itemize}
+            \item Sources: arXiv, PubMed, OpenAlex (for older literature)
+            \item Why: High-quality, structured, and varied writing styles
+        \end{itemize}
+        
+        \item \textbf{News Articles:}
+        \begin{itemize}
+            \item Sources: CBC News, BBC News, Reuters
+            \item Why: Factual, professionally edited, diverse topics
+        \end{itemize}
+        
+        \item \textbf{Creative Writing:}
+        \begin{itemize}
+            \item Sources: Wattpad, Fanfiction.net, literary blogs
+            \item Why: Informal, narrative-driven, varied author styles
+        \end{itemize}
+        
+        \item \textbf{Social Media \& Forums:}
+        \begin{itemize}
+            \item Sources: Reddit (long-form posts), Quora, Facebook
+            \item Why: Conversational, personal, and opinionated writing
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{AI-Generated Text:}
+    \begin{itemize}
+        \item GPT Models (OpenAI, Gemini, Deepseek):
+        \begin{itemize}
+            \item Using the API calls, one can generate synthetic text with varying prompts (e.g., essays, stories, technical writing)
+            \item Use different model versions (GPT-3.5, GPT-4, etc.) to capture evolution
+        \end{itemize}
 
+         \item Kaggle:
+        \begin{itemize}
+            \item Provides various styles of texts that one can compare, for example one can fetch a dataset that contains generated texts from LLM.
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Hybrid (Human + AI Edited):}
+    \begin{itemize}
+        \item Wikipedia Edits:
+        \begin{itemize}
+            \item By using the edit history one can compare pre- and post-GPT-4 Wikipedia edits
+        \end{itemize}
+        
+        \item GitHub Docs:
+        \begin{itemize}
+            \item Some repositories use AI for README generation, this can be identified via commit logs
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 
-\subsubsection*{Author Contributions}
-If you'd like to, you may include  a section for author contributions as is done
-in many journals. This is optional and at the discretion of the authors.
+\subsection{Data Collection \& Repurposing Efforts}
+We gathered data in several careful ways to make sure it was both useful and ethical:
 
-\subsubsection*{Acknowledgments}
-Use unnumbered third level headings for the acknowledgments. All
-acknowledgments, including those to funding agencies, go at the end of the paper.
+\begin{itemize}
+    \item \textbf{Web Scraping (Respectful \& Legal):}
+    \begin{itemize}
+        \item By using open source frameworks that can help with extracting data in an efficient manner such that delays of overloading servers are avoided, use: \textit{scrapy} or \textit{BeautifulSoup}
+        \item Web scraping is legal so long as the data is publicly available
+    \end{itemize}
+    
+    \item \textbf{Using APIs to Generate Synthetic Data:}
+    \begin{itemize}
+        \item OpenAI API with varied prompts (i.e "Write an essay about AI").
+    \end{itemize}
+    
+    \item \textbf{Data Augmentation:}
+    \begin{itemize}
+        \item Paraphrase human text using AI to create "AI-like" samples
+    \end{itemize}
+    
+    \item \textbf{Partnerships:}
+    \begin{itemize}
+        \item Collaborate with universities for student-written vs. AI-assisted essays
+    \end{itemize}
+\end{itemize}
+
+\subsection{Data Cleaning \& Preprocessing}
+Before using the data, we must clean and organize it to ensure quality and fairness. First, we removed duplicate or nearly identical content to avoid repetition:
+\begin{itemize}
+    \item \textbf{Deduplication \& Noise Removal:}
+    \begin{itemize}
+        \item Near-Deduplication:
+        \begin{itemize}
+            \item Use MinHash/LSH (Locality-Sensitive Hashing) to remove near-identical samples
+        \end{itemize}
+        
+        \item Language Filtering:
+        \begin{itemize}
+            \item Keep only English text (fastText language detection, developed by Facebook AI Researchers).
+        \end{itemize}
+        
+        \item Quality Filtering:
+        \begin{itemize}
+            \item Remove low-quality text (e.g., incomplete sentences, excessive repetition)
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Text Normalization:}
+    \begin{itemize}
+        \item Lowercasing (optional, case-sensitive models may retain it)
+        \item Remove boilerplate (HTML tags, ads, headers/footers)
+        \item Expand contractions ("can't" $\rightarrow$ "cannot") for consistency
+    \end{itemize}
+    
+    \item \textbf{Balancing \& Stratification:}
+    \begin{itemize}
+        \item Ensure balanced classes (human vs. AI) across various domains of writing (academic, creative, etc.)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Labeling \& Validation}
+There needs to be a way in which human verification is used for labeling and validating the data.
+
+\begin{itemize}
+    \item \textbf{Human Verification:}
+    \begin{itemize}
+        \item Crowdsource (Amazon Mechanical Turk) to label ambiguous cases
+        \item Expert review for disputed samples (e.g., linguistics PhDs)
+    \end{itemize}
+    
+    \item \textbf{Confidence Scoring:}
+    \begin{itemize}
+        \item Use models (RoBERTa, GPT-detectors) to flag uncertain samples for rechecking
+    \end{itemize}
+
+    \item \textbf{Kaggle:}
+    \begin{itemize}
+        \item By using a dataset of LLM generated texts, provided from this source one can compare and contrast when validating data.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Feature Engineering}
+\begin{itemize}
+    \item \textbf{Stylometric Features:}
+    \begin{itemize}
+        \item Sentence length variance, word rarity, POS tag ratios
+    \end{itemize}
+    
+    \item \textbf{Perplexity Scores:}
+    \begin{itemize}
+        \item Compare human vs. AI text using small GPT-2
+    \end{itemize}
+    
+    \item \textbf{Watermarking Detection:}
+    \begin{itemize}
+        \item If watermarks are presented in the AI text(e.g., OpenAI's), incorporate detection.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Dataset Splitting}
+\begin{itemize}
+    \item Split data into: Train (70\%) / Validation (15\%) / Test (15\%)
+    \item Ensure each split has no overlapping sources/authors.
+    \item If testing newer AI Models. One can split based on time (e.g., train on GPT-3, test on GPT-4).
+\end{itemize}
+
+\section{Architecture}
+The MLP stands out as the most effective neural network architecture for AI text detection. Studies comparing various machine learning models have shown that MLPs strike the best balance between accuracy, efficiency, and flexibility. While SVMs require manual feature engineering and LSTM networks are computationally intensive, MLPs deliver high accuracy without these drawbacks. As highlighted in the AI-Catcher study, MLPs outperform CNNs in capturing the overall coherence of text, which is a key factor in detecting AI-generated content. Unlike complex ensemble methods, which added little value in challenges like ChatGPT detection, MLPs offer a simpler, more interpretable solution that scales well. MLPs further enhance their practicality by working with both engineered features and raw text embeddings. Altogether, MLPs combine performance, simplicity, and real-world validation, making them an ideal choice for reliable, production-ready AI text detection system.
+
+\section{Baseline Model}
+Most of the research that investigates effective AI writing detection algorithms found that SVM was the best model for accuracy (Tariq et al., 2024)(Cingillioglu, 2023).
+Sklearn has a built-in SVM model package that can be built given specific parameters and trained on the data. This would require hyperparameter tuning of the model, which would initially be based off of what was found to be effective in the literature. A 2024 study focused on the detection of human-written and AI-written texts found the default settings of Sklearn's SVM model were sufficient in training (Tariq et al., 2024). With the default settings, the kernel will be "rbf" (Radial Basis Function) for non-linear classification, the regularization parameter will be set to 1.0, and the gamma parameter set to "scale" (Tariq et al., 2024).
+
+\section{Ethical Considerations}
+When creating an AI detection tool, there are many ethical concerns such as accuracy, bias, and privacy.
+While we aim to make a model as accurate as possible, there is still a chance for human writing to be detected as AI. Bias in the model is another issue, which can occur from the training data. A group particularly affected by AI detection systems is that of non-native English speakers, whose writing is flagged as AI-generated more often than that of native speakers due to differences in writing styles and levels of sophistication (Myers, 2023). Also, the risk of a biased model is that individuals begin to fear being flagged, even without AI usage. Such fears can stop people from openly expressing themselves and limit creativity. Another ethical consideration is that many individuals may not be comfortable in having their work used for model training, and the use of their data without consent would be a breach of privacy. 
+We need to be careful in training our AI model as there are a lot of consequences of false detection of AI generated writing since plagiarism is tied into a person’s credibility. With a larger dataset and the ability to learn from a variety of different texts, the team will aim to train the model to be as accurate as possible and reduce its bias.
+
+\section{Project Plan}
+We will hold weekly meetings on Mondays to discuss current progress and future steps. All forms of communications will take place online via Discord, unless specified otherwise. To ensure we do not overwrite each other's code, each member will create and work on their own branches through the use of version control. Each member will open a pull request when they wish to merge with the main branch after code reviews have been completed. 
+
+A summary of the Project Plan timeline with assignees and deadlines is shown in Figure 3. 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth,height=0.9\textheight,keepaspectratio]{gnatt.png}
+    \caption{Project Gantt Chart}
+    \label{fig:pipeline}
+\end{figure}
+
+\section{Risk Register}
+In the creation of an AI model to detect if written work is made by AI, there are many problems that the team may encounter. Despite the chance of these challenges occurring, we have planned ahead on how to handle them.
+
+\subsection{High Risk — Long Training Time Due to Large Dataset}
+\textbf{Risk:} Since our dataset has a large dataset, each with at least 350 words entered at a time, training the model on the full set is likely to take a significant amount of time.\\
+\textbf{Solution:} To mitigate the risk of not completing the training on time, we intend to reduce our sample size accordingly, potentially by half, ensuring that our set is still diverse. If time allows later on, we can expand the dataset for further training. 
+
+\subsection{Medium Risk — Breach of User Privacy}
+\textbf{Risk:} Since our model will be trained on written content, there is a chance that users may not want their own work to be used, making the likelihood of invading user privacy medium risk.\\
+\textbf{Solution:} To mitigate any breach of privacy, we will warn users of how their data is being used. That way, whoever uses the model is giving their consent for their work to be used for training purposes and they are aware of how the data they are giving is being handled.
+
+\subsection{Medium Risk — Detecting Human Writing as AI in Plagiarism Detection}
+\textbf{Risk:} As the model is limited to the training of our dataset, the likelihood that it becomes biased and can mistake human writing as AI is a medium risk. \\
+\textbf{Solution:} To mitigate the chance of the model mistaking human writing as AI, we have a large dataset with a variety of writing, teaching the model as best as possible in detecting if the written work was done by AI. This way, the model can learn from a more complex dataset and be better prepared in differentiating AI-written work from human-written work.
+
+\subsection{Medium Risk — Missing Deadlines}
+\textbf{Risk:} Our members have busy schedules with many of us working or having other activities to take care of, making the likelihood of missing deadlines a medium risk. \\
+\textbf{Solution:} To mitigate the chance of missing major deadlines for the project or procrastination, the team will break tasks up and create internal deadlines using gantt charts. That way if any team member is unable to complete their part on time, there is still time for other members to help them and meet the major deadline.
+
+\subsection{Low Risk — Team Members Dropping the Course}
+\textbf{Risk:} As all of our team members need this course for our degrees, the likelihood of anyone dropping out is low risk. \\
+\textbf{Solution:} To mitigate the damage to the project timeline if a team member were to drop, the team member that is leaving must notify the group as soon as possible. The team member leaving should ensure others understand the next steps of any incomplete work. Also having gantt charts and weekly meetings will help the other members redistribute responsibilities.
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\section{Link to Github/Colab}
+\noindent
+\href{https://github.com/shill7/APS360_Project}{\underline{\textcolor{blue}{GitHub Repository}}}
 
 \label{last_page}
 
