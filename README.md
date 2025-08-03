@@ -29,7 +29,7 @@ Place the files in the **root directory** of the project like this:
 
 ### **Backend**
 **1. Install dependencies**
-> pip install -r requirements.
+> pip install -r requirements.txt
 
 **2. Run the backend**
 > cd server <br/> python app.py
