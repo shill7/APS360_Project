@@ -1,0 +1,38 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  font-family: sans-serif;
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+textarea {
+  width: 600px;
+  min-height: 200px;
+  resize: vertical;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+
