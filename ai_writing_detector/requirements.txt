@@ -1,0 +1,8 @@
+flask
+flask-cors
+torch
+transformers
+nltk
+textstat
+scikit-learn
+joblib

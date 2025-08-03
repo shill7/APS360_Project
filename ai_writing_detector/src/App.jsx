@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import 'react-circular-progressbar/dist/styles.css';
 import './App.css';
 import SemiCircle from './semiCircle';
 
