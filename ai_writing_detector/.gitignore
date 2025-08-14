@@ -27,3 +27,4 @@ dist-ssr
 *.bin
 *.pkl
 tokenizer/
+tokenizer2/

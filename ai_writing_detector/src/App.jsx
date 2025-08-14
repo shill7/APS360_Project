@@ -64,9 +64,14 @@ function App() {
       {result && (
         <div className="result">
           <p><strong>Your Text is {result.prediction}</strong></p>
+          <p style={{ marginTop: 4 }}>
+            Confidence: 
+              Human {Math.round((1-result.aiConfidence) * 100)}% | 
+              AI {Math.round(result.aiConfidence * 100)}%
+          </p>
           <div style={{ width: 200, height: 100, margin: 'auto' }}>
             <SemiCircle points={(result.aiConfidence * 100).toFixed(0)} maxPoints={100} />
-            <div style={{ textAlign: 'center', marginTop: '-60px', fontSize: '24px' }}> AI GPT*
+            <div style={{ textAlign: 'center', marginTop: '-60px', fontSize: '24px' }}> AI likelihood
             </div>
           </div>
         </div>

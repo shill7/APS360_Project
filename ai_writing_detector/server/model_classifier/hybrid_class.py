@@ -15,10 +15,39 @@ MODEL_NAME = 'roberta-base'
 # --------------------------
 # Hybrid Model Architecture
 # --------------------------
+# class HybridClassifier(nn.Module):
+#     def __init__(self, n_linguistic_features, n_classes=2):
+#         super(HybridClassifier, self).__init__()
+#         self.roberta = RobertaModel.from_pretrained(MODEL_NAME)
+#         self.linguistic_fc = nn.Linear(n_linguistic_features, 32)
+#         self.classifier = nn.Sequential(
+#             nn.Linear(self.roberta.config.hidden_size + 32, 64),
+#             nn.ReLU(),
+#             nn.Dropout(0.1),
+#             nn.Linear(64, n_classes)
+#         )
+
+#     def forward(self, input_ids, attention_mask, linguistic_features):
+#         roberta_output = self.roberta(
+#             input_ids=input_ids,
+#             attention_mask=attention_mask
+#         )
+
+#         pooled_output = roberta_output.pooler_output
+#         linguistic_output = torch.relu(self.linguistic_fc(linguistic_features))
+
+#         combined = torch.cat((pooled_output, linguistic_output), dim=1)
+#         return self.classifier(combined)
+
 class HybridClassifier(nn.Module):
     def __init__(self, n_linguistic_features, n_classes=2):
         super(HybridClassifier, self).__init__()
         self.roberta = RobertaModel.from_pretrained(MODEL_NAME)
+
+        # Freeze RoBERTa
+        for param in self.roberta.parameters():
+            param.requires_grad = False
+
         self.linguistic_fc = nn.Linear(n_linguistic_features, 32)
         self.classifier = nn.Sequential(
             nn.Linear(self.roberta.config.hidden_size + 32, 64),
@@ -28,17 +57,11 @@ class HybridClassifier(nn.Module):
         )
 
     def forward(self, input_ids, attention_mask, linguistic_features):
-        roberta_output = self.roberta(
-            input_ids=input_ids,
-            attention_mask=attention_mask
-        )
-
+        roberta_output = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = roberta_output.pooler_output
         linguistic_output = torch.relu(self.linguistic_fc(linguistic_features))
-
         combined = torch.cat((pooled_output, linguistic_output), dim=1)
         return self.classifier(combined)
-
 
 class LinguisticFeatureExtractor:
     def __init__(self):

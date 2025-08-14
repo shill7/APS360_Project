@@ -12,10 +12,10 @@ NUM_LINGUISTIC_FEATURES = 7
 MODEL_NAME = 'roberta-base'
 
 # Load components once
-tokenizer = RobertaTokenizer.from_pretrained('./tokenizer')
+tokenizer = RobertaTokenizer.from_pretrained('./tokenizer2')
 feature_extractor = LinguisticFeatureExtractor()
 model = HybridClassifier(NUM_LINGUISTIC_FEATURES)
-model.load_state_dict(torch.load('hybrid_classifier_weights.pt', map_location='cpu'))
+model.load_state_dict(torch.load('hybrid_classifier_weights2.pt', map_location='cpu'))
 model.eval()
 
 @app.route('/predict', methods=['POST'])
@@ -34,11 +34,9 @@ def predict():
     # Inference
     with torch.no_grad():
         outputs = model(input_ids, attention_mask, linguistic_tensor)
-        temperature = 2.0 # Temporary fix to overconfidence in model
-        probs = torch.softmax(outputs/temperature, dim=1).numpy()[0]
+        probs = torch.softmax(outputs, dim=1).numpy()[0]
         prediction = int(probs.argmax())
         confidence = float(probs[prediction])
-        print(outputs.shape)
 
     return jsonify({
         'prediction': prediction,
